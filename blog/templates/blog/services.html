@@ -1,0 +1,29 @@
+{% extends 'blog/main.html' %}
+
+{%block content %}
+
+<br><br><br>
+<div class="container-fluid services-section">
+    <h1 class="text-center">Our Services</h1>
+    <div class="row">
+        {% for i in service_info %}
+        <div class="col-md-4">
+            <div class="card tex">
+                <div class="card-header bg-dark">
+                    <h5 class="text-white">{{i.name}}</h5>
+                </div>
+                <ul>
+                    {% for j in i.subservice_set.all %}
+                    <li class="list-item">{{j.name}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<br><br><br><br>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'blog/main.html' %}
+
+{%block content %}
+
+<div class="container-fluid form-section">
+    <h1 class="text-center text-white">Contact Us</h1>
+    <h2 class="text-center text-white">Have any query? Let us know.</h2>
+    <br><br>
+    <div class="row">
+
+
+        <div class="col-md-5">
+            <p class="text-white contact-icon"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;&nbsp; ABC Street, XYZ District</p>
+            <p class="text-white contact-icon"><i class="fa fa-phone"></i>&nbsp;&nbsp;&nbsp; +244 8974938098</p>
+            <p class="text-white contact-icon"><i class="fa fa-envelope"></i>&nbsp;&nbsp;&nbsp; some.random@gmail.com</p>
+            <hr style="width: 100%; border-color: white;">
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <form name="contact_form" method="post" action="{% url 'contact' %}" onsubmit="return validateForm()">
+                {% csrf_token %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <button class="btn btn-success">{{ message }}</button>
+                    <br><br>
+                    {% endfor %}
+                    {% endif %}
+
+                <input type="text" name="name" placeholder="Your Name" class="form-control">
+                <br>
+                <input type="email" name="email" placeholder="Your Email" class="form-control">
+                <br>
+                <input type="text" name="phone" placeholder="Your Phone Number" class="form-control">
+                <br>
+                <textarea name="concern" class="form-control" rows="8"></textarea>
+                <br>
+                <button class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

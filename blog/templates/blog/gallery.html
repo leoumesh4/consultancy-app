@@ -1,0 +1,21 @@
+{% extends 'blog/main.html' %}
+{% load static %}
+
+{%block content %}
+
+<br><br><br>
+
+<div class="container-fluid img-gallery">
+    <h1 class="text-center">Our Image Gallery</h1>
+    <div class="row mt-4">
+        {% for i in gallery_images %}
+        <div class="item col-sm-4 cold-md-3 mb-3">
+            <a href="{{i.gallery_img.url}}" class="fancybox" data-fancybox="gallery1">
+                <img src="{{i.gallery_img.url}}" width="100%" height="100%">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

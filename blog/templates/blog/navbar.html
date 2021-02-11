@@ -1,0 +1,57 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+	<a class="navbar-brand" href=""><img src="{% static 'images/logo1.png' %}"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item active">
+				<a class="nav-link" href="{% url 'home' %}">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'service' %}">Services</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'team' %}">Team</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{% url 'contact' %}">Contact</a>
+			</li>
+		</ul>
+	</div>
+
+</nav>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="7000">
+	<ol class="carousel-indicators">
+		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+	</ol>
+
+	<div class="carousel-inner" role="listbox">
+		{% for j in image_slider %}
+				<div class="carousel-item {% if forloop.first %} active {% endif %}">
+					<img src="{{j.slider_image.url}}">
+					<div class="carousel-caption text-center">
+						<h1>{{j.main_heading}}</h1>
+						<h3>{{j.sub_heading}}</h3>
+					</div>
+				</div>
+		{% endfor %}
+
+
+	</div>
+	<a class="carousel-control-prev" href="#carouselExampleIndicators" roll="button" data-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	</a>
+	<a class="carousel-control-next" href="#carouselExampleIndicators" roll="button" data-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+	</a>
+</div>
